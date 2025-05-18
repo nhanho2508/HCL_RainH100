@@ -45,9 +45,9 @@ class FFHQ(Dataset):
         self.transform = transform
         self.img_paths = extract_images(image_root)
         if split == 'train':
-            self.img_paths = list(filter(lambda p: '00000' <= (os.path.dirname(p)).split('/')[-1] < '60000', self.img_paths))
+            self.img_paths = list(filter(lambda p: '00000' <= (os.path.dirname(p)).split('\\')[-1] < '60000', self.img_paths))
         elif split == 'test':
-            self.img_paths = list(filter(lambda p: '60000' <= (os.path.dirname(p)).split('/')[-1] < '70000', self.img_paths))
+            self.img_paths = list(filter(lambda p: '60000' <= (os.path.dirname(p)).split('\\')[-1] < '70000', self.img_paths))
 
     def __len__(self):
         return len(self.img_paths)

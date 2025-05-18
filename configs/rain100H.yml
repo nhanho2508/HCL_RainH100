@@ -3,8 +3,8 @@ seed: 3407
 
 
 data:
-  name: FFHQ
-  dataroot: data/FFHQ/
+  name: raindrop
+  dataroot: C:/Users/ADMIN/Downloads/rain_100H
   img_size: 256
 
 
@@ -14,9 +14,6 @@ mask:
   dir_invert_color: true
   noise_type: real  # 'constant', 'random_noise', 'random_single_color', 'real'
   real_dataset:
-    - name: CelebA-HQ
-      dataroot: data/CelebA-HQ/
-      img_size: 256
     - name: ImageNet
       dataroot: data/ImageNet/
       img_size: 256

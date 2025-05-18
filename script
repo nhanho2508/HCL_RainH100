@@ -1,0 +1,12 @@
+torchrun train.py -c ./configs/places256.yml -p 1
+
+
+python test.py sample -c ./configs/places256.yml --test.pretrained C:/Users/ADMIN/Downloads/places256.pt --test.n_samples 50 --test.save_dir ./result/Places2 --mask.dir_path ./mask
+python test.py sample -c ./configs/ffhq256.yml --test.pretrained C:/Users/ADMIN/Downloads/ffhq256.pt --test.n_samples 70 --test.save_dir ./result/FFHQ --mask.dir_path ./mask
+python test.py sample -c ./configs/imagenet256.yml --test.pretrained C:/Users/ADMIN/Downloads/imagenet256.pt --test.n_samples 50 --test.save_dir ./result/ImageNet --mask.dir_path ./mask
+python test.py sample -c ./configs/logo30K.yml --test.pretrained C:/Users/ADMIN/Downloads/step017999.pt --test.n_samples 4055 --test.save_dir ./result/LOGO_30K --mask.dir_path ./mask
+python test.py sample -c ./configs/rain100H.yml --test.pretrained C:/Users/ADMIN/Downloads/step017999.pt --test.n_samples 4055 --test.save_dir ./result/LOGO_30K --mask.dir_path ./mask
+python test.py sample -c ./configs/rain100H.yml --test.pretrained C:/Users/ADMIN/Downloads/step017999.pt --test.n_samples 100 --test.save_dir ./result/Rain100H --mask.dir_path ./mask --data.dataroot C:/Users/ADMIN/Downloads/rain100H/rain100H
+
+
+

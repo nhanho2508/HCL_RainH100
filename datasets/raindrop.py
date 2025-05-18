@@ -23,11 +23,23 @@ class Raindrop(Dataset):
         assert os.path.isdir(root), f'{root} is not an existing directory'
         assert split in ['train', 'test']
         self.transform = transform
-        if split == 'test':
-            split = 'test_b'
-        self.corrupted_paths = extract_images(os.path.join(root, split, 'data'))
-        self.img_paths = extract_images(os.path.join(root, split, 'gt'))
-        assert len(self.img_paths) == len(self.corrupted_paths)
+
+        split_dir = os.path.join(root)
+
+        self.corrupted_paths = sorted([
+            os.path.join(split_dir, f)
+            for f in os.listdir(split_dir)
+            if f.startswith('rain-') and os.path.isfile(os.path.join(split_dir, f))
+        ])
+
+        self.img_paths = sorted([
+            os.path.join(split_dir, f)
+            for f in os.listdir(split_dir)
+            if f.startswith('norain-') and os.path.isfile(os.path.join(split_dir, f))
+        ])
+
+        assert len(self.img_paths) == len(self.corrupted_paths), \
+            f'Number of ground truth images ({len(self.img_paths)}) does not match number of corrupted images ({len(self.corrupted_paths)}).'
 
     def __len__(self):
         return len(self.img_paths)
